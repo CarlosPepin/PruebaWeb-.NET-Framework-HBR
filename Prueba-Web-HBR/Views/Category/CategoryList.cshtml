@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Prueba_Web_HBR.Models.tblCategoria>
+
+@{
+    ViewBag.Title = "CategoryList";
+}
+
+<h2>Lista de Categorias</h2>
+
+<p>
+    @Html.ActionLink("Nueva Categoria", "CategoryCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(category => category.NombreCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(category => category.DescripcionCategoria)
+        </th>
+       
+    </tr>
+
+    @foreach (var category in Model) 
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => category.NombreCategoria)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => category.DescripcionCategoria)
+    </td>
+    
+    <td>
+        @Html.ActionLink("Editar", "CategoryEdit", new { id = category.idCategoria }) |
+        @Html.ActionLink("Detalle", "CategoryDetail", new { id = category.idCategoria }) |
+        @Html.ActionLink("Eliminar", "CategoryDeleteConfirmed", new { id = category.idCategoria })
+    </td>
+</tr>
+    }
+
+</table>

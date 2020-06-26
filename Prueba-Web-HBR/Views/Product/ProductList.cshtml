@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Prueba_Web_HBR.Models.tblProducto>
+
+@{
+    ViewBag.Title = "ProductList";
+}
+
+<h2>Lista de Productos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Producto", "ProductCreate")
+</p>
+
+@using (Html.BeginForm("ProductList", "Product", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="sumit"/>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(product => product.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(product => product.DescripcionProducto)
+        </th>
+
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => product.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.DescripcionProducto)
+            </td>
+
+            <td>
+                @Html.ActionLink("Editar", "ProductEdit", new { id = product.idProducto }) |
+                @Html.ActionLink("Detalle", "ProductDetail", new { id = product.idProducto }) |
+                @Html.ActionLink("Eliminar", "ProductDeleteConfirmed", new { id = product.idProducto })
+            </td>
+        </tr>
+    }
+
+</table>

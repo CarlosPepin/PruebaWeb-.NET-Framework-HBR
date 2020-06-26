@@ -1,0 +1,28 @@
+﻿@model Prueba_Web_HBR.Models.tblCategoria
+
+@{
+    ViewBag.Title = "CategoryCreate";
+}
+
+<h2>Crear nueva categoria</h2>
+
+
+@using (Html.BeginForm("CategoryCreate", "Category", FormMethod.Post))
+{
+    <div class="col-md-12">
+        @Html.LabelFor(category => category.NombreCategoria)
+        @Html.TextBoxFor(category => category.NombreCategoria, "", new { @class = "form-control" })
+        @Html.LabelFor(category => category.DescripcionCategoria)
+        @Html.TextBoxFor(category => category.DescripcionCategoria, "", new { @class = "form-control" })
+    
+        <div>
+            <input value="Crear" class="btn btn-default"  type="submit"/>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Lista de categorias", "CategoryList")
+</div>
+
+

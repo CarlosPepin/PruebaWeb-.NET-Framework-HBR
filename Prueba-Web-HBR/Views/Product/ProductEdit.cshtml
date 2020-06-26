@@ -1,0 +1,37 @@
+﻿@model Prueba_Web_HBR.Models.tblProducto
+
+@{
+    ViewBag.Title = "ProductEdit";
+}
+
+<h2>Editar Producto</h2>
+
+
+@using (Html.BeginForm("ProductEdit", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.idProducto)
+
+<div class="col-md-12">
+    @Html.LabelFor(product => product.NombreProducto)
+    @Html.TextBoxFor(product => product.NombreProducto, "", new { @class = "form-control" })
+    @Html.LabelFor(product => product.DescripcionProducto)
+    @Html.TextBoxFor(product => product.DescripcionProducto, "", new { @class = "form-control" })
+    @Html.LabelFor(product => product.idCategoria)
+    @Html.TextBoxFor(product => product.idCategoria, "", new { @class = "form-control" })
+    @Html.LabelFor(product => product.PrecioProducto)
+    @Html.TextBoxFor(product => product.PrecioProducto, "", new { @class = "form-control" })
+    @Html.LabelFor(product => product.CantidadProducto)
+    @Html.TextBoxFor(product => product.CantidadProducto, "", new { @class = "form-control" })
+
+    <div>
+        <input value="Guardar cambios" class="btn btn-default" type="submit" />
+    </div>
+</div>
+
+}
+
+<div>
+    @Html.ActionLink("Lista de propductos", "ProductList")
+</div>
+
+
