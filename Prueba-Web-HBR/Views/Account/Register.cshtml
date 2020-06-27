@@ -1,0 +1,37 @@
+﻿@model Prueba_Web_HBR.Models.tblUsuario
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Regsitrar Nuevo Usuario</h2>
+
+@using (Html.BeginForm("RegisterUser", "Account"))
+{
+<div class="col-md-12">
+    @Html.LabelFor(user => user.NombreUsuario)
+    @Html.TextBoxFor(user => user.NombreUsuario, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.ApellidoUsuario)
+    @Html.TextBoxFor(user => user.ApellidoUsuario, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.FechaNacimiento)
+    @Html.TextBoxFor(user => user.FechaNacimiento, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.Cedula)
+    @Html.TextBoxFor(user => user.Cedula, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.Edad)
+    @Html.TextBoxFor(user => user.Edad, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.Email)
+    @Html.TextBoxFor(user => user.Email, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.Telefono)
+    @Html.TextBoxFor(user => user.Telefono, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.Direccion)
+    @Html.TextBoxFor(user => user.Direccion, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.Contraseña)
+    @Html.TextBoxFor(user => user.Contraseña, "", new { @class = "form-control" })
+    @Html.LabelFor(user => user.ConfirmarContraseña)
+    @Html.TextBoxFor(user => user.ConfirmarContraseña, "", new { @class = "form-control" })
+
+    <div>
+        <input value="Registar Usuario" class="btn btn-default" type="submit" />
+    </div>
+</div>
+}

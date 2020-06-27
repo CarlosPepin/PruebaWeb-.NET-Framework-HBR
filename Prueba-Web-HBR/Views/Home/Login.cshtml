@@ -1,0 +1,32 @@
+﻿@model Prueba_Web_HBR.Models.tblUsuario
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-12">
+        <hr />
+        @Html.LabelFor(user => user.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(user => user.Email, new { htmlAttributes = new { @class = "form-control" } })
+
+        @Html.LabelFor(user => user.Contraseña, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(user => user.Contraseña, new { htmlAttributes = new { @class = "form-control" } })
+
+        <div>
+            <input value="Entrar" class="btn btn-default" type="submit" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Volver a Home", "Index")
+</div>
+
+

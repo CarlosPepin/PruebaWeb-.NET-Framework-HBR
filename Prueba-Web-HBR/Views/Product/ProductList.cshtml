@@ -6,14 +6,28 @@
 
 <h2>Lista de Productos</h2>
 
-<p>
+<p class ="btn btn-default">
     @Html.ActionLink("Nuevo Producto", "ProductCreate")
 </p>
 
-@using (Html.BeginForm("ProductList", "Product", FormMethod.Get))
+@using (Html.BeginForm("ProductList", "Product", FormMethod.Post))
 {
-    @Html.TextBox("searching")
-    <input type="submit" value="sumit"/>
+    <table class="table">
+        <tr>
+            <th>
+                <h5>Filtrar por Nombre</h5>
+                @Html.TextBox("searching")
+            </th>
+            <th>
+                <h5>Filtrar por Categoria</h5>
+                @Html.DropDownList("Filtro", (SelectList)ViewBag.Filtro, "Please select", new { @class = "form-control" })
+            </th>
+            <th>
+                <input class ="btn btn-primary" type="submit" value="Buscar" />
+            </th>
+        </tr>
+
+    </table>
 }
 
 <table class="table">
@@ -23,6 +37,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(product => product.DescripcionProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(product => product.tblCategoria.NombreCategoria)
         </th>
 
     </tr>
@@ -36,11 +53,20 @@
             <td>
                 @Html.DisplayFor(modelItem => product.DescripcionProducto)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => product.tblCategoria.NombreCategoria)
+            </td>
 
             <td>
-                @Html.ActionLink("Editar", "ProductEdit", new { id = product.idProducto }) |
-                @Html.ActionLink("Detalle", "ProductDetail", new { id = product.idProducto }) |
-                @Html.ActionLink("Eliminar", "ProductDeleteConfirmed", new { id = product.idProducto })
+                <p class="btn btn-default">
+                    @Html.ActionLink("Editar", "ProductEdit", new { id = product.idProducto })
+                </p>
+                <p class="btn btn-default">
+                    @Html.ActionLink("Detalle", "ProductDetail", new { id = product.idProducto }) 
+                </p>
+                <p class="btn btn-danger">
+                     @Html.ActionLink("Eliminar", "ProductDeleteConfirmed", new { id = product.idProducto })
+                </p>
             </td>
         </tr>
     }

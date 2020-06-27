@@ -9,6 +9,7 @@
 
 @using (Html.BeginForm("ProductCreate", "Product", FormMethod.Post))
 {
+
 <div class="col-md-12">
     @Html.LabelFor(product => product.NombreProducto)
     @Html.TextBoxFor(product => product.NombreProducto, "", new { @class = "form-control" })

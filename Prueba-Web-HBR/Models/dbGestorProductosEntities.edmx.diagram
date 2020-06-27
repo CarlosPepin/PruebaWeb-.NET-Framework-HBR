@@ -8,8 +8,8 @@
         <EntityTypeShape EntityType="dbGestorProductosModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbGestorProductosModel.tblCategoria" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dbGestorProductosModel.tblProducto" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbGestorProductosModel.tblUsuatio" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="dbGestorProductosModel.FK__tblProduc__idCat__29572725" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbGestorProductosModel.tblUsuario" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

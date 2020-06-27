@@ -28,6 +28,6 @@ namespace Prueba_Web_HBR.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tblCategoria> tblCategorias { get; set; }
         public virtual DbSet<tblProducto> tblProductoes { get; set; }
-        public virtual DbSet<tblUsuatio> tblUsuatios { get; set; }
+        public virtual DbSet<tblUsuario> tblUsuarios { get; set; }
     }
 }

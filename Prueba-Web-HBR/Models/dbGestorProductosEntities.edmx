@@ -34,7 +34,7 @@
           <Property Name="CantidadProducto" Type="int" />
           <Property Name="PrecioProducto" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="tblUsuatio">
+        <EntityType Name="tblUsuario">
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
@@ -49,6 +49,7 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Direccion" Type="varchar" MaxLength="355" Nullable="false" />
           <Property Name="Contraseña" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfirmarContraseña" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__tblProduc__idCat__29572725">
           <End Role="tblCategoria" Type="Self.tblCategoria" Multiplicity="1" />
@@ -66,7 +67,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategoria" EntityType="Self.tblCategoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProducto" EntityType="Self.tblProducto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblUsuatio" EntityType="Self.tblUsuatio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__tblProduc__idCat__29572725" Association="Self.FK__tblProduc__idCat__29572725">
             <End Role="tblCategoria" EntitySet="tblCategoria" />
             <End Role="tblProducto" EntitySet="tblProducto" />
@@ -107,22 +108,6 @@
           <Property Name="CantidadProducto" Type="Int32" />
           <Property Name="PrecioProducto" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="tblUsuatio">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-          </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreUsuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ApellidoUsuario" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Edad" Type="Int32" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="355" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <Association Name="FK__tblProduc__idCat__29572725">
           <End Role="tblCategoria" Type="Self.tblCategoria" Multiplicity="1" />
           <End Role="tblProducto" Type="Self.tblProducto" Multiplicity="*" />
@@ -139,12 +124,29 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tblCategorias" EntityType="Self.tblCategoria" />
           <EntitySet Name="tblProductoes" EntityType="Self.tblProducto" />
-          <EntitySet Name="tblUsuatios" EntityType="Self.tblUsuatio" />
           <AssociationSet Name="FK__tblProduc__idCat__29572725" Association="Self.FK__tblProduc__idCat__29572725">
             <End Role="tblCategoria" EntitySet="tblCategorias" />
             <End Role="tblProducto" EntitySet="tblProductoes" />
           </AssociationSet>
+          <EntitySet Name="tblUsuarios" EntityType="dbGestorProductosModel.tblUsuario" />
         </EntityContainer>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoUsuario" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Cedula" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="355" FixedLength="false" Unicode="false" />
+          <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmarContraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -183,20 +185,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblUsuatios">
-            <EntityTypeMapping TypeName="dbGestorProductosModel.tblUsuatio">
-              <MappingFragment StoreEntitySet="tblUsuatio">
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="ApellidoUsuario" ColumnName="ApellidoUsuario" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="Edad" ColumnName="Edad" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <EntitySetMapping Name="tblUsuarios">
+            <EntityTypeMapping TypeName="dbGestorProductosModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="ConfirmarContraseña" ColumnName="ConfirmarContraseña" />
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="ApellidoUsuario" ColumnName="ApellidoUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

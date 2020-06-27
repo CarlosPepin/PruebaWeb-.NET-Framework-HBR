@@ -11,12 +11,16 @@ namespace Prueba_Web_HBR.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class tblUsuatio
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class tblUsuario
     {
         public int idUsuario { get; set; }
         public string NombreUsuario { get; set; }
         public string ApellidoUsuario { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}",ApplyFormatInEditMode = true)]
         public System.DateTime FechaNacimiento { get; set; }
         public System.DateTime FechaRegistro { get; set; }
         public int Edad { get; set; }
@@ -24,6 +28,10 @@ namespace Prueba_Web_HBR.Models
         public string Cedula { get; set; }
         public string Email { get; set; }
         public string Direccion { get; set; }
+        [DataType(DataType.Password)]
         public string Contraseña { get; set; }
+        [DataType(DataType.Password)]
+        [Compare("Contraseña")]
+        public string ConfirmarContraseña { get; set; }
     }
 }
