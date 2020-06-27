@@ -225,7 +225,6 @@
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Product\ProductCreate.cshtml" />
     <Content Include="Views\Product\ProductEdit.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />

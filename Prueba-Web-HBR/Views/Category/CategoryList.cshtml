@@ -6,7 +6,7 @@
 
 <h2>Lista de Categorias</h2>
 
-<p>
+<p class="btn btn-default">
     @Html.ActionLink("Nueva Categoria", "CategoryCreate")
 </p>
 <table class="table">
@@ -31,9 +31,15 @@
     </td>
     
     <td>
-        @Html.ActionLink("Editar", "CategoryEdit", new { id = category.idCategoria }) |
-        @Html.ActionLink("Detalle", "CategoryDetail", new { id = category.idCategoria }) |
-        @Html.ActionLink("Eliminar", "CategoryDeleteConfirmed", new { id = category.idCategoria })
+        <p class="btn btn-default">
+            @Html.ActionLink("Editar", "CategoryEdit", new { id = category.idCategoria })
+        </p>
+        <p class="btn btn-default">
+            @Html.ActionLink("Detalle", "CategoryDetail", new { id = category.idCategoria })
+        </p>
+        <p class="btn btn-danger">
+            @Html.ActionLink("Eliminar", "CategoryDeleteConfirmed", new { id = category.idCategoria })
+        </p>
     </td>
 </tr>
     }
