@@ -5,3 +5,12 @@
 
 <h2>¡Hola @Session["NombreUsuario"].ToString()!</h2>
 
+<div>
+    @Html.Label("¿Editar perfil?")
+    <p class="btn btn-success">
+        @Html.ActionLink("Editar", "EditUser", new { id = Session["idUsuario"] })
+    </p>
+</div>
+
+
+

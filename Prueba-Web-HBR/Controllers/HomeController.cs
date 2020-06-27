@@ -2,6 +2,7 @@
 using Prueba_Web_HBR.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +18,7 @@ namespace Prueba_Web_HBR.Controllers
             return View();
         }
 
+        #region Registro de Usuario
         public ActionResult Register()
         {
             return View();
@@ -34,7 +36,9 @@ namespace Prueba_Web_HBR.Controllers
             }
             return View();
         }
+        #endregion
 
+        #region Login
         public ActionResult Login()
         {
             return View();
@@ -60,6 +64,28 @@ namespace Prueba_Web_HBR.Controllers
             }
             return View(_user);
         }
+        #endregion
+
+        #region Editar Usuario
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            var user = db.tblUsuarios.SingleOrDefault(e => e.idUsuario == id);
+            return View(user);
+        }
+        
+        [HttpPost]
+        public ActionResult EditUser(tblUsuario editatedUser)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(editatedUser).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Welcome");
+            }
+            return View(editatedUser);
+        }
+        #endregion
 
         public ActionResult Welcome()
         {
